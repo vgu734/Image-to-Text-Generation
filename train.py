@@ -69,7 +69,7 @@ if __name__ == "__main__":
     alteration_classes = gen_alt_classes(base_alt_classes) #maps alteration classes to their captions
     alt_images_dict = select_random_images(alteration_classes) #maps alteration classes to associated random images
     alt_image_values_dict = gen_img_values(alt_images_dict, base_alt_classes) #maps altered images to their paths/randomized alteration parameters/captions
-    #gen_altered_images(alteration_classes, alt_image_values_dict) #generate altered images for each alteration classes and populate Staging
+    gen_altered_images(alteration_classes, alt_image_values_dict) #generate altered images for each alteration classes and populate Staging
     
     ds = get_img_text_pairs(alt_image_values_dict)
     #print(ds)
