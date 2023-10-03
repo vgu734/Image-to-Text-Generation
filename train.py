@@ -75,7 +75,7 @@ if __name__ == "__main__":
     #print(ds)
     model = MyModel()
     #model.train(ds[:1000], num_epochs=5)
-    model.train(ds, num_epochs=10, batch_size=int(list({sys.argv[1]})[0]), lr=float(list({sys.argv[2]})[0]), weight_decay=float(list({sys.argv[3]})[0]))
+    model.train(ds, num_epochs=7, batch_size=int(list({sys.argv[1]})[0]), lr=float(list({sys.argv[2]})[0]), weight_decay=float(list({sys.argv[3]})[0]))
     
     #model_predictions_for_dir(alt_image_values_dict, './mymodels/Archive/model_2023-09-30 16:54:45_epoch2_wer0.13.pth')
     
