@@ -20,3 +20,13 @@ def reset_data_dir(root_name, alteration_classes):
                 pass
             else:
                 os.makedirs(folder_dir)
+                
+def create_gitignore_dirs():
+    paths = ['./mymodels', './mymodels/Archive', './mymodels/Predictions']
+    
+    if not os.path.exists('./Data'):
+        raise RuntimeError("You can't run this code without the the data downloaded into ./Data")
+    
+    for path in paths:
+        if not os.path.exists(path):
+            os.makdirs(path)
