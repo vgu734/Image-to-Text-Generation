@@ -11,7 +11,7 @@ from tqdm import tqdm
 def validate_pth(modelpth):
     return modelpth
 
-def model_predictions_for_dir(model_path, path = './Staging', n_files=10):
+def model_predictions_for_dir(model_path, path = './Staging', n_files=100):
     model_state_dict = torch.load(model_path)
     # Add a prefix 'model.' to each key in the state dictionary so it can read it
     new_state_dict = {}
@@ -52,8 +52,9 @@ def model_predictions_for_dir(model_path, path = './Staging', n_files=10):
 def agg_for_diagnostics(df, csv_path):
     grouped = df.groupby(["predicted_captions", "actual_captions"]).size().reset_index(name="count")
     pivot_df = grouped.pivot_table(index="actual_captions", columns="predicted_captions", values="count", fill_value=0)
-    print(pivot_df)
     pivot_df.to_csv(f'./mymodels/Predictions/{csv_path}')
+    html_path = csv_path.replace('.csv', '.html')
+    pivot_df.to_html(f'./mymodels/Predictions/{html_path}')
     
 if __name__ == "__main__":
     create_gitignore_dirs()
