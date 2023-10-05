@@ -15,12 +15,12 @@ if __name__ == "__main__":
     'BLUR': 'increase image resolution', 
     'CONp': 'decrease contrast', 
     'CONn': 'increase contrast', 
-    #'BRIp': 'decrease brightness', 
-    #'BRIn': 'increase brightness', 
-    #'SATp': 'decrease saturation', 
-    'SATn': 'increase saturation', 
-    #'ZOOp': 'zoom in', 
-    #'ZOOn': 'zoom out'
+    #'BRIp': 'decrease brightness', #increasing brightness is very similar in effect to increase contrast
+    'BRIn': 'increase brightness', 
+    #'SATp': 'decrease saturation', #increasing/decreasing saturation doesn't actually change the image too much, esp when combined with other effects
+    #'SATn': 'increase saturation', 
+    'ZOOp': 'zoom in', 
+    'ZOOn': 'zoom out'
     }
     
     create_gitignore_dirs()
@@ -34,5 +34,5 @@ if __name__ == "__main__":
     ds = get_img_text_pairs(alt_image_values_dict)
     #print(ds)
     model = MyModel()
-    model.train(ds, num_epochs=7, batch_size=int(list({sys.argv[1]})[0]), lr=float(list({sys.argv[2]})[0]), weight_decay=float(list({sys.argv[3]})[0]))
+    #model.train(ds, num_epochs=7, batch_size=int(list({sys.argv[1]})[0]), lr=float(list({sys.argv[2]})[0]), weight_decay=float(list({sys.argv[3]})[0]))
     

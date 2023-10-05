@@ -2,3 +2,4 @@ Data/
 Staging/
 mymodels/
 capgen/__pycache__/
+.ipynb_checkpoints/

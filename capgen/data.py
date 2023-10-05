@@ -73,23 +73,23 @@ def gen_img_values(alt_images_dict, alt_classes, seed=234234059):
         inner_args = {}
 
         if 'BLUR' in key:
-            inner_args['BLUR'] = [11, 17 + 1, 2] #correspond to lower_bound, upper_bound, step
+            inner_args['BLUR'] = [9, 15 + 1, 2] #correspond to lower_bound, upper_bound, step
         if 'CONp' in key:
-            inner_args['CONp'] = [1.8, 2.5, .1]
+            inner_args['CONp'] = [1.35, 2, .05]
         if 'CONn' in key:
-            inner_args['CONn'] = [.1, .2, .1]
+            inner_args['CONn'] = [.1, .3, .1]
         if 'BRIp' in key:
             inner_args['BRIp'] = [65, 75, 1]
         if 'BRIn' in key:
-            inner_args['BRIn'] = [-150, -135, 1]
+            inner_args['BRIn'] = [-170, -135, 1]
         if 'SATp' in key:
             inner_args['SATp'] = [1.8, 1.9, .1]
         if 'SATn' in key:
             inner_args['SATn'] = [.1, .2, .1]
         if 'ZOOp' in key:
-            inner_args['ZOOp'] = [1.5, 1.6, .1]
+            inner_args['ZOOp'] = [1.5, 2, .1]
         if 'ZOOn' in key:
-            inner_args['ZOOn'] = [.4, .5, .1]
+            inner_args['ZOOn'] = [.5, .7, .1]
         else:
             pass
 

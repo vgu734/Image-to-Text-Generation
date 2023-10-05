@@ -8,9 +8,6 @@ from capgen.folder import create_gitignore_dirs
 
 from tqdm import tqdm
 
-def validate_pth(modelpth):
-    return modelpth
-
 def model_predictions_for_dir(model_path, path = './Staging', n_files=100):
     model_state_dict = torch.load(model_path)
     # Add a prefix 'model.' to each key in the state dictionary so it can read it
@@ -50,12 +47,12 @@ def model_predictions_for_dir(model_path, path = './Staging', n_files=100):
     agg_for_diagnostics(df, csv_path)
 
 def agg_for_diagnostics(df, csv_path):
+    df.to_csv(f'./mymodels/Predictions/{csv_path}')
     grouped = df.groupby(["predicted_captions", "actual_captions"]).size().reset_index(name="count")
     pivot_df = grouped.pivot_table(index="actual_captions", columns="predicted_captions", values="count", fill_value=0)
-    pivot_df.to_csv(f'./mymodels/Predictions/{csv_path}')
     html_path = csv_path.replace('.csv', '.html')
-    pivot_df.to_html(f'./mymodels/Predictions/{html_path}')
+    pivot_df.to_html(f'./mymodels/Predictions/test{html_path}')
     
 if __name__ == "__main__":
     create_gitignore_dirs()
-    model_predictions_for_dir('./mymodels/Archive/model_2023-09-30 16:54:45_epoch2_wer0.13.pth')
+    model_predictions_for_dir('./mymodels/model_epoch5_wer0.7_4_1e-06_0.001.pth')
