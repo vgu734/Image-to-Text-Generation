@@ -75,7 +75,7 @@ def gen_img_values(alt_images_dict, alt_classes, seed=234234059):
         if 'BLUR' in key:
             inner_args['BLUR'] = [9, 15 + 1, 2] #correspond to lower_bound, upper_bound, step
         if 'CONp' in key:
-            inner_args['CONp'] = [1.35, 2, .05]
+            inner_args['CONp'] = [1.35, 1.7, .05]
         if 'CONn' in key:
             inner_args['CONn'] = [.1, .3, .1]
         if 'BRIp' in key:
