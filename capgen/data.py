@@ -79,7 +79,7 @@ def gen_img_values(alt_images_dict, alt_classes, seed=234234059):
         if 'CONn' in key:
             inner_args['CONn'] = [.1, .3, .1]
         if 'BRIp' in key:
-            inner_args['BRIp'] = [65, 75, 1]
+            inner_args['BRIp'] = [55, 75, 1]
         if 'BRIn' in key:
             inner_args['BRIn'] = [-170, -135, 1]
         if 'SATp' in key:

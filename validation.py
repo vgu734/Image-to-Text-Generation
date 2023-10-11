@@ -51,9 +51,8 @@ def agg_for_diagnostics(df, csv_path):
     grouped = df.groupby(["predicted_captions", "actual_captions"]).size().reset_index(name="count")
     pivot_df = grouped.pivot_table(index="actual_captions", columns="predicted_captions", values="count", fill_value=0)
     html_path = csv_path.replace('.csv', '.html')
-    pivot_df.to_html(f'./mymodels/Predictions/test{html_path}')
+    pivot_df.to_html(f'./mymodels/Predictions/{html_path}')
     
 if __name__ == "__main__":
     create_gitignore_dirs()
-    model_predictions_for_dir('./mymodels/model_epoch4_wer0.19_4_1e-06_0.001.pth')
-    model_predictions_for_dir('./mymodels/model_epoch7_wer0.2_4_1e-06_0.0.pth')
+    model_predictions_for_dir('./mymodels/model_epoch4_wer0.42_4_1e-06_0.001.pth')

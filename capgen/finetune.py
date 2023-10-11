@@ -1,4 +1,4 @@
-import datetime
+import time
 import torch
 import torch.nn as nn
 
@@ -19,6 +19,7 @@ class MyModel(nn.Module):  # Inherit from torch.nn.Module
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.best_wer = float('inf')
         self.best_metrics = [None, None, None, None, None]
+        self.now = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.time()))
 
     def train(self, ds, num_epochs=1, batch_size=4, test_size=.1, lr=1e-5, weight_decay=0.001):
         print(f'Training model with batch size {batch_size}, learning rate {lr:.0e}, weight decay {weight_decay}')
@@ -102,7 +103,7 @@ class MyModel(nn.Module):  # Inherit from torch.nn.Module
         return generated_caption
     
     def save_model(self, best_model_state):
-        torch.save(best_model_state, f'./mymodels/model_epoch{self.best_metrics[0]}_wer{self.best_metrics[1]}_{self.best_metrics[2]}_{self.best_metrics[3]:.0e}_{self.best_metrics[4]}.pth')
+        torch.save(best_model_state, f'./mymodels/model_{self.now}_epoch{self.best_metrics[0]}_wer{self.best_metrics[1]}_{self.best_metrics[2]}_{self.best_metrics[3]:.0e}_{self.best_metrics[4]}.pth')
 
 class ProcessDataset(Dataset):
     def __init__(self, dataframe, processor):
