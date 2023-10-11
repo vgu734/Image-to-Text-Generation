@@ -55,4 +55,4 @@ def agg_for_diagnostics(df, csv_path):
     
 if __name__ == "__main__":
     create_gitignore_dirs()
-    model_predictions_for_dir('./mymodels/model_epoch4_wer0.42_4_1e-06_0.001.pth')
+    model_predictions_for_dir('./mymodels/Archive/model_2023-10-05 20:37:20_epoch7_wer0.2_4_1e-06_0.0.pth')
