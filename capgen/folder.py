@@ -29,4 +29,4 @@ def create_gitignore_dirs():
     
     for path in paths:
         if not os.path.exists(path):
-            os.makdirs(path)
+            os.makedirs(path)
