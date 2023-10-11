@@ -28,6 +28,7 @@ def model_predictions_for_dir(model_path, path = './Staging', n_files=100):
 
     predicted_captions = []
     actual_captions = []
+    image_paths = []
 
     for root, directories, files in os.walk(path):
         if root != path:
@@ -39,10 +40,11 @@ def model_predictions_for_dir(model_path, path = './Staging', n_files=100):
                     file_path = os.path.join(root, file)
                     predicted_captions.append(mymodel.gen_caption(file_path))
                     actual_captions.append(file_path.split('/')[4][:file_path.split('/')[4].find('WBC')-1])
+                    image_paths.append(file_path)
                     progress_bar.update(1)
     progress_bar.close()
                     
-    df = pd.DataFrame({'predicted_captions': predicted_captions, 'actual_captions': actual_captions})
+    df = pd.DataFrame({'predicted_captions': predicted_captions, 'actual_captions': actual_captions, 'image_path': image_paths})
     csv_path = model_path.split('/')[-1].replace('.pth', '.csv')
     agg_for_diagnostics(df, csv_path)
 
