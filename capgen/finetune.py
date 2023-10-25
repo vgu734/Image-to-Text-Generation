@@ -92,10 +92,20 @@ class MyModel(nn.Module):  # Inherit from torch.nn.Module
                               
         self.save_model(best_model_state)
     
-    def gen_caption(self, image_path):
+    def gen_caption_img_path(self, image_path):
         self.model.to(self.device)
         self.model.eval()
         image = Image.open(image_path)
+        inputs = self.processor(images=image, return_tensors='pt').to(self.device)
+        pixel_values = inputs.pixel_values
+        generated_ids = self.model.generate(pixel_values=pixel_values, max_length=50)
+        generated_caption = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+        return generated_caption
+    
+    def gen_caption_img_array(self, img_array):
+        self.model.to(self.device)
+        self.model.eval()
+        image = Image.fromarray(img_array)
         inputs = self.processor(images=image, return_tensors='pt').to(self.device)
         pixel_values = inputs.pixel_values
         generated_ids = self.model.generate(pixel_values=pixel_values, max_length=50)
