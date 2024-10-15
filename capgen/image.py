@@ -70,4 +70,4 @@ def get_img_text_pairs(alt_image_values_dict):
         image_paths.append(alt_image_values_dict[key]['staging_path'])
         text_labels.append(alt_image_values_dict[key]['caption'])
 
-    return pd.DataFrame({'image_path': image_paths, 'text': text_labels})
+    return pd.DataFrame({'image_path': image_paths, 'text': text_labels}).sample(frac=1).reset_index(drop=True)
